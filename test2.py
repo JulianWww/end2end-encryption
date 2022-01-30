@@ -8,6 +8,6 @@ sock.bind(("", 25900))
 sock.listen()
 other, addrs = sock.accept()
 
-c = createComunicator(sock, 1024)
+c = createComunicator(other, 2048)
 data = c.recv().decode()
 print(data==txt)

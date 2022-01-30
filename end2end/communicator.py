@@ -3,7 +3,6 @@ from .core.encryptor import DummyEncoder, RSAEncoder
 from .core.keys import pubkeyToBin, pubkeyFromBin
 from rsa import newkeys
 
-
 class Communicator():
     def __init__(self, sock, encoder, decoder):
         self.sock = sock
@@ -16,12 +15,20 @@ class Communicator():
         self.encoder.key = pubkeyFromBin(self._recv())
     
     def _send(self, data):
-        self.sock.send(int.to_bytes(len(data), 4, "little"))
-        self.sock.send(data)
+        self.sock.sendall(int.to_bytes(len(data), 4, "little"))
+        self.sock.sendall(data)
+    
+    def _recvData(self, size):
+        received_payload = b""
+        reamining_payload_size = size
+        while reamining_payload_size != 0:
+            received_payload += self.sock.recv(reamining_payload_size)
+            reamining_payload_size = size - len(received_payload)
+        return received_payload
     
     def _recv(self):
         size =  int.from_bytes(self.sock.recv(4), "little")
-        return self.sock.recv(size)
+        return self._recvData(size)
     
     def send(self, data):
         data = self.encoder.encrypt(data)
@@ -29,6 +36,7 @@ class Communicator():
     
     def recv(self):
         data = self._recv()
+        print("length: ", len(data))
         return self.decoder.decrypt(data)
 
 

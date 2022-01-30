@@ -1,6 +1,7 @@
 from .core.decryptor import DummyDecoder, RSADecoder
 from .core.encryptor import DummyEncoder, RSAEncoder
 from .core.keys import pubkeyToBin, pubkeyFromBin
+from rsa import newkeys
 
 
 class Communicator():
@@ -31,6 +32,6 @@ class Communicator():
         return self.decoder.decrypt(data)
 
 
-
-
-
+def createComunicator(sock, keySize):
+    (pubkey, privkey) = newkeys(keySize)
+    return Communicator(sock, RSAEncoder(pubkey), RSADecoder(privkey))

@@ -1,6 +1,6 @@
-from .core.decryptor import DummyDecoder, RSADecoder
-from .core.encryptor import DummyEncoder, RSAEncoder
-from .core.keys import pubkeyToBin, pubkeyFromBin
+from end2end.core.decryptor import DummyDecoder, RSADecoder
+from end2end.core.encryptor import DummyEncoder, RSAEncoder
+from end2end.core.keys import pubkeyToBin, pubkeyFromBin
 from rsa import newkeys
 
 class Communicator():

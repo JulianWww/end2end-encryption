@@ -5,7 +5,7 @@ with open("README.md", "r") as file:
     long_description = file.read()
 
 setup(name='end2end',
-      version='1.1.4',
+      version='1.2',
       description='Python end two end encryption designed for socket',
       long_description=long_description,
       long_description_content_type='text/markdown',

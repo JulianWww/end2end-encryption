@@ -1,5 +1,5 @@
 import rsa
-from .rsaHandler import RSAHandler
+from end2end.core.rsaHandler import RSAHandler
 
 
 class DummyDecoder():

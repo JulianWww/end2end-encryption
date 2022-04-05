@@ -12,7 +12,7 @@ setup(name='end2end',
       author='Julian Wandhoven',
       author_email='jwandhoven@gmail.com',
       url='https://www.python.org/sigs/distutils-sig/',
-      packages=find_packages(include=['end2end', "end2end/core"]),
+      packages=['end2end', "end2end/core"],
       license="MIT",
       install_requires = [
           "rsa"

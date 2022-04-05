@@ -1,5 +1,5 @@
 import rsa
-from .keys import getIntSize
+from end2end.core.keys import getIntSize
 
 
 class RSAHandler():

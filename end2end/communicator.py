@@ -36,7 +36,6 @@ class Communicator():
     
     def recv(self):
         data = self._recv()
-        print("length: ", len(data))
         return self.decoder.decrypt(data)
 
 
